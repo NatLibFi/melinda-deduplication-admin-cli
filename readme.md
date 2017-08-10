@@ -10,7 +10,6 @@ Trigger duplicate check for all records in the datastore (without fetch from ILS
 
 Split previously merged record / Cancel merge of a record
 
-
 Usage:
 
   deduplication record get [-f <format>] [-d <date>] <base> <record-id>

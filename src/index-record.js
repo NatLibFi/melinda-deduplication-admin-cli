@@ -2,10 +2,7 @@
 const params = require('commander');
 
 params
-  .version('0.0.1')
-  .option('-C, --chdir <path>', 'change the working directory')
-  .option('-c, --config <path>', 'set config path. defaults to ./deploy.conf')
-  .option('-T, --no-tests', 'ignore test hook')
+  .version('0.0.1');
 
 params
   .command('get <base> <record-id>')
@@ -21,9 +18,9 @@ params
 params
   .command('history <base> <record-id>')
   .description('get list of record history')
-  .action(function(base, recordId, options) {
+  .action(function(base, recordId) {
     console.log('get history of record %s/%s', base, recordId);
-  })
+  });
 
 params
   .command('add <filename>')
