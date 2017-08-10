@@ -10,3 +10,12 @@ Trigger duplicate check for all records in the datastore (without fetch from ILS
 
 Split previously merged record / Cancel merge of a record
 
+
+Usage:
+
+  deduplication record get [-f <format>] [-d <date>] <base> <record-id>
+  deduplication record history <base> <record-id>
+  deduplication record add [-f <alephSequential>] <filename>
+  deduplication trigger-change <base> <record-id>
+  deduplication check-all-records
+  deduplication split <base> <record-id>

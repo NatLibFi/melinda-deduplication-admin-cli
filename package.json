@@ -2,7 +2,9 @@
   "name": "melinda-deduplication-cli",
   "version": "1.0.0",
   "description": "",
-  "bin": { "deduplication": "./build/index.js" },
+  "bin": {
+    "deduplication": "./build/index.js"
+  },
   "scripts": {
     "postinstall": "cd melinda-deduplication-common && npm install",
     "build": "npm run build:main && npm run build:common && npm run copy:main:packagejson && npm run copy:common:packagejson",
@@ -29,6 +31,7 @@
     "flow-bin": "^0.48.0"
   },
   "dependencies": {
+    "commander": "^2.11.0",
     "debug": "^2.6.8",
     "lodash": "^4.17.4"
   }
