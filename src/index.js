@@ -1,5 +1,10 @@
 #!/usr/bin/env node
 const params = require('commander');
+const _ = require('lodash');
+const fetch = require('node-fetch');
+
+const DEDUPLICATION_API = _.get(process.env, 'DEDUPLICATION_API', 'http://localhost:3001');
+
 
 params
   .version('0.0.1')
@@ -8,8 +13,18 @@ params
 params
   .command('trigger-change <base> <record-id>')
   .description('Trigger fake change of single record causing deduplication process for that record')
-  .action(function(base, recordId, options) {  
+  .action(async function(base, recordId, options) {
     console.log('Triggering change of record %s/%s', base, recordId);
+
+    const response = await fetch(`${DEDUPLICATION_API}/trigger-change/${base}/${recordId}`, {method: 'POST'});
+    if (response.status !== 200) {
+      console.error(`Error: ${response.statusText}`);
+      const body = await response.text();
+      console.log(body);
+      process.exit(1);
+    } else {
+      console.log(response.statusText);
+    }
   });
 
 params
