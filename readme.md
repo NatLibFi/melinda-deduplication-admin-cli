@@ -1,6 +1,6 @@
 # melinda-deduplication-cli
 
-This package contains a command line interface for managing deduplication system
+Command line interface for managing deduplication system
 
 Add a record to the datastore. Reads file in aleph sequential format.
 

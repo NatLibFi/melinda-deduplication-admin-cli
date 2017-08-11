@@ -26,13 +26,17 @@ params
   .action(async function(base, recordId, options) {
  
     const format = options.format;
+    const date = options.date;
     if (format && CONVERTERS[format] === undefined) {
       const availableFormats = Object.keys(CONVERTERS).join(', ');
       console.error(`Invalid record format: '${format}'. Available formats are: ${availableFormats}`);
       process.exit(1);
     }
 
-    const response = await fetch(`${DEDUPLICATION_API}/record/read/${base}/${recordId}`, {method: 'POST'});
+    const baseUrl = `${DEDUPLICATION_API}/record/read/${base}/${recordId}`;
+    const url = date ? `${baseUrl}/version/${date}` : baseUrl;
+
+    const response = await fetch(url, {method: 'POST'});
     if (response.status === 200) {      
       const body = await response.json();
       const record = new MarcRecord(body);
