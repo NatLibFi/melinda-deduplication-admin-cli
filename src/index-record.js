@@ -159,10 +159,8 @@ params
         console.log(`Saved record ${base}/${recordId}`);
         debug(`Saved record ${base}/${recordId}`);
       } else {
-        console.error(`Error: ${response.statusText}`);
         const body = await response.text();
-        console.log(body);
-        process.exit(1);
+        throw new Error(`Error: ${response.statusText}\n ${body}`);
       }
       
     }
